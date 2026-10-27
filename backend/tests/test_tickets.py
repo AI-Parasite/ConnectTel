@@ -1,6 +1,7 @@
 import pytest
 from app.tickets import create_ticket_id
 
+
 def test_ticket_id_valid():
     assert create_ticket_id(42) == "CT-000042"
 

@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
+import app.tickets as tk
 
 app = FastAPI()
 
@@ -8,4 +9,8 @@ def health_check():
   "status": "ok",
   "service": "connecttel-api"
     }
+
+@app.get("/tickets/{number}")
+def get_ticket_id(number: int = Path(ge=1, le=999999)):
+    return {"ticket_id": tk.create_ticket_id(number)}
 
